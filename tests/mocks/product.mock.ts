@@ -21,8 +21,24 @@ const emptyNameProduct: ProductInputtableTypes = {
   "orderId": 4
 }
 
+const validProductListFromDB: Product[] = [
+  {
+    "id": 1,
+    "name": "Pedra Filosofal",
+    "price": "20 gold",
+    "orderId": 1
+  },
+  {
+    "id": 2,
+    "name": "Lança do Destino",
+    "price": "100 diamond",
+    "orderId": 1
+  }
+]
+
 export default {
-  validTransactionBody: validProductBody,
-  validTransactionFromDB: validProductFromDB,
-  emptyNameTransaction: emptyNameProduct,
+  validProductBody,
+  validProductFromDB,
+  emptyNameProduct,
+  validProductListFromDB
 };

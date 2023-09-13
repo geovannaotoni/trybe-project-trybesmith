@@ -11,16 +11,16 @@ describe('POST /products', function () {
   beforeEach(function () { sinon.restore(); });
 
   it('quando a requisição é feita com dados válidos, deve retornar o status 201 e os dados do produto criado', async function () {
-    sinon.stub(ProductModel, 'create').resolves(ProductModel.build(productMock.validTransactionFromDB));
+    sinon.stub(ProductModel, 'create').resolves(ProductModel.build(productMock.validProductFromDB));
 
-    const httpResponse = await chai.request(app).post('/products').send(productMock.validTransactionBody);
+    const httpResponse = await chai.request(app).post('/products').send(productMock.validProductBody);
 
     expect(httpResponse.status).to.be.equal(201);
-    expect(httpResponse.body).to.be.deep.equal(productMock.validTransactionFromDB);
+    expect(httpResponse.body).to.be.deep.equal(productMock.validProductFromDB);
   });
 
   it('quando a requisição é feita com dados inválidos, deve retornar o status 400 e uma mensagem de erro', async function () {
-    const httpResponse = await chai.request(app).post('/products').send(productMock.emptyNameTransaction);
+    const httpResponse = await chai.request(app).post('/products').send(productMock.emptyNameProduct);
 
     expect(httpResponse.status).to.be.equal(400);
     expect(httpResponse.body).to.be.deep.equal({ message: 'Product data is invalid'});
