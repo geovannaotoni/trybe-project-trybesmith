@@ -9,6 +9,13 @@ const create = async (req: Request, res: Response) => {
   res.status(mapStatusHttp(serviceResponse.status)).json(serviceResponse.data);
 };
 
+const list = async (req: Request, res: Response) => {
+  const serviceResponse = await productsService.list();
+
+  res.status(mapStatusHttp(serviceResponse.status)).json(serviceResponse.data);
+};
+
 export default {
   create,
+  list,
 };
