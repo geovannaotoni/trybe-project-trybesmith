@@ -17,11 +17,8 @@ describe('GET /orders', function () {
           include: [ { model: ProductModel, as: 'productIds', attributes: ['id'] } ]
         })));
 
-    const response = (await OrderModel.findAll()).map((order) => order.dataValues);
-    console.log('response', response);
     const httpResponse = await chai.request(app).get('/orders');
 
-    console.log(httpResponse.body);
     expect(httpResponse.status).to.be.equal(200);
     expect(httpResponse.body).to.be.deep.equal(orderMock.validOrderListResponse);
   });
