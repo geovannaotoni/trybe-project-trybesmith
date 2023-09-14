@@ -5,7 +5,7 @@ const validateLogin = (login: Login): ServiceResponseError | void => {
   const { username, password } = login;
 
   if (!username || !password) {
-    return { status: 'INVALID_DATA', data: { message: '"username" and "password" are required' } };
+    return { status: 'BAD_REQUEST', data: { message: '"username" and "password" are required' } };
   }
 };
 

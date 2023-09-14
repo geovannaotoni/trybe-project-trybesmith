@@ -19,10 +19,17 @@ describe('POST /products', function () {
     expect(httpResponse.body).to.be.deep.equal(productMock.validProductFromDB);
   });
 
-  it('quando a requisição é feita com dados inválidos, deve retornar o status 400 e uma mensagem de erro', async function () {
+  it('quando a requisição é feita com o campo nome vazio, deve retornar o status 422 e uma mensagem de erro', async function () {
     const httpResponse = await chai.request(app).post('/products').send(productMock.emptyNameProduct);
 
+    expect(httpResponse.status).to.be.equal(422);
+    expect(httpResponse.body).to.be.deep.equal({ message: '"name" is not allowed to be empty' });
+  });
+
+  it('quando a requisição é feita com faltando o campo nome, deve retornar o status 400 e uma mensagem de erro', async function () {
+    const httpResponse = await chai.request(app).post('/products').send(productMock.withoutNameProduct);
+
     expect(httpResponse.status).to.be.equal(400);
-    expect(httpResponse.body).to.be.deep.equal({ message: 'Product data is invalid'});
+    expect(httpResponse.body).to.be.deep.equal({ message: '"name" is required' });
   });
 });

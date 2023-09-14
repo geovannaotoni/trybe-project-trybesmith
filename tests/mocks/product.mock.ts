@@ -21,6 +21,12 @@ const emptyNameProduct: ProductInputtableTypes = {
   "orderId": 4
 }
 
+const withoutNameProduct = {
+  "id": 1,
+  "price": "30 peças de ouro",
+  "orderId": 4
+}
+
 const validProductListFromDB: Product[] = [
   {
     "id": 1,
@@ -40,5 +46,6 @@ export default {
   validProductBody,
   validProductFromDB,
   emptyNameProduct,
-  validProductListFromDB
+  validProductListFromDB,
+  withoutNameProduct,
 };
