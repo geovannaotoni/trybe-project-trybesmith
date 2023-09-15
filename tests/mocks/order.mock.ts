@@ -36,7 +36,37 @@ const validOrderListResponse: Order[] = [
   }
 ]
 
+const validOrderToCreate = {
+  "userId": 1,
+  "productIds": [1, 2]
+}
+
+const invalidOrderToCreate = {
+  "userId": 1,
+  "productIds": [1000, 2]
+}
+
+const orderToCreateEmptyProductsId = {
+  "userId": 1,
+  "productIds": []
+}
+
+const orderToCreateWithoutUserId = {
+  "productIds": [1, 2]
+}
+
+const newOrderFromDB = {
+  "id": 4,
+  "userId": 1,
+  "productIds": [1, 2]
+}
+
 export default {
   validOrderListFromDB,
   validOrderListResponse,
+  validOrderToCreate,
+  orderToCreateEmptyProductsId,
+  orderToCreateWithoutUserId,
+  newOrderFromDB,
+  invalidOrderToCreate,
 }
