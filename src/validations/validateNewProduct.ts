@@ -1,6 +1,6 @@
 import { ProductInputtableTypes } from '../database/models/product.model';
 import { ServiceResponseError } from '../types/ServiceResponse';
-import addProductSchema from './schemas';
+import { addProductSchema } from './schemas';
 
 const validateNewProduct = (product: ProductInputtableTypes): ServiceResponseError | undefined => {
   const { error } = addProductSchema.validate(product);

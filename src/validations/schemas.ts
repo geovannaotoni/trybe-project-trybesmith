@@ -6,4 +6,16 @@ const addProductSchema = Joi.object({
   orderId: Joi.number().required(),
 });
 
-export default addProductSchema;
+const addOrderSchema = Joi.object({
+  userId: Joi.number().integer().min(1).required()
+    .strict(),
+  productIds: Joi.array().items(Joi.number()).min(1).required()
+    .messages({
+      'array.min': '"productIds" must include only numbers',
+    }),
+});
+
+export {
+  addProductSchema,
+  addOrderSchema,
+};

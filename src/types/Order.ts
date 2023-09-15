@@ -3,3 +3,8 @@ export type Order = {
   userId: number;
   productIds?: number[] | { id: number }[];
 };
+
+export type CreateOrder = {
+  userId: number;
+  productIds: number[];
+};

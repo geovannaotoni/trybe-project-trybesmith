@@ -12,6 +12,17 @@ function sign(payload: TokenPayload): string {
   return token;
 }
 
+function extractToken(authorization: string): string {
+  return authorization.split(' ')[1];
+}
+
+function verify(authorization: string): TokenPayload {
+  const token = extractToken(authorization);
+  const decoded = jwt.verify(token, secret);
+  return decoded as TokenPayload;
+}
+
 export default {
   sign,
+  verify,
 };
