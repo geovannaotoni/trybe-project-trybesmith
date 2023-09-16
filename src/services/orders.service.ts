@@ -1,3 +1,4 @@
+import db from '../database/models';
 import OrderModel from '../database/models/order.model';
 import ProductModel from '../database/models/product.model';
 import UserModel from '../database/models/user.model';
@@ -44,12 +45,17 @@ const create = async (order: CreateOrder): Promise<ServiceResponse<CreateOrder>>
   const errorFoundProducts = await verifyProductId(productIds);
   if (errorFoundProducts) return errorFoundProducts;
   
-  const newOrder = await OrderModel.create({ userId });
-  productIds.forEach((productId) => {
-    ProductModel.update({ orderId: newOrder.dataValues.id }, { where: { id: productId } });
+  const result = await db.transaction(async (transaction) => {
+    const newOrder = await OrderModel.create({ userId }, { transaction });
+    const updatePromises = productIds.map((productId) => ProductModel.update(
+      { orderId: newOrder.dataValues.id }, 
+      { where: { id: productId }, transaction },
+    ));
+    await Promise.all(updatePromises);
+    return { userId, productIds };
   });
 
-  return { status: 'CREATED', data: { userId, productIds } };
+  return { status: 'CREATED', data: result };
 };
 
 export default {
