@@ -1,7 +1,7 @@
 # TrybeSmith - API utilizando Typescript e Sequelize
-Este projeto consiste na criação de uma loja de itens medievais, como espadas personalizadas, no formato de uma API. A linguagem utilizada é Typescript e o banco de dados - que possui as tabelas de pessoas usuárias (users), produtos (products) e pedidos (orders) - é gerenciado pelo Sequelize.
+Este projeto consiste na criação de uma loja de itens medievais, como espadas personalizadas, no formato de uma API. A linguagem utilizada foi o Typescript e o banco de dados foi gerenciado pelo Sequelize. 
 
-Foram desenvolvidas as camadas de Service e Controllers da aplicação, que possui endpoints que para dar suporte às operações de criação, leitura e atualização de informações.
+O banco possui as tabelas de pessoas usuárias (users), produtos (products) e pedidos (orders). Foram desenvolvidas as camadas de Service e Controllers da aplicação, que possui endpoints para dar suporte às operações de criação, leitura e atualização de informações.
 
 Além disso, este repositório contém os testes unitários e de integração para a API. Foram utilizadas as ferramentas Mocha, Chai e Sinon para testar os comportamentos de alguns recursos da API.
 
