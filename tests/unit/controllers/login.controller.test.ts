@@ -20,7 +20,7 @@ describe('LoginController', function () {
     sinon.restore();
   });
 
-  it('ao não receber o username, retorna um erro', async function () {
+  it('#login: ao não receber o username, retorna um erro', async function () {
     req.body = userMock.bodyWithoutUsername;
     const serviceResponse: ServiceResponse<Token> = {
       status: 'BAD_REQUEST',
@@ -35,7 +35,7 @@ describe('LoginController', function () {
     expect(res.json).to.have.been.calledWith(serviceResponse.data);
   });
 
-  it('ao receber um username e uma senha válida, retorna um token', async function () {
+  it('#login: ao receber um username e uma senha válida, retorna um token', async function () {
     req.body = userMock.bodyComplete;
     const token = { token: 't0k3nv4l1d4' };
     const serviceResponse: ServiceResponse<Token> = {

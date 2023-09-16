@@ -7,7 +7,7 @@ import UserModel from '../../../src/database/models/user.model';
 describe('LoginService', function () {
   beforeEach(function () { sinon.restore(); });
   
-  it('ao não receber o username, retorna um erro', async function () {
+  it('#verifyLogin: ao não receber o username, retorna um erro', async function () {
     const parameters = userMock.bodyWithUsernameEmpty;
 
     const serviceResponse = await loginService.verifyLogin(parameters);
@@ -16,7 +16,7 @@ describe('LoginService', function () {
     expect(serviceResponse.data).to.be.deep.equal({ message: '"username" and "password" are required' });
   });
 
-  it('ao receber um e-mail e uma senha válida, retorna um token de login', async function () {
+  it('#verifyLogin: ao receber um e-mail e uma senha válida, retorna um token de login', async function () {
     // Arrange
     const parameters = userMock.bodyComplete;
     sinon.stub(UserModel, 'findOne').resolves(UserModel.build(userMock.existingUser));
