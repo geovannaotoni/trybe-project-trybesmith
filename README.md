@@ -46,4 +46,4 @@ A rota `POST /orders` exige autenticação com JWT. Para acessá-la, é necessá
 Para garantir a segurança das senhas dos usuários, foi utilizada a biblioteca `bcryptjs` para criptografá-las antes de armazená-las no banco de dados. Isso garante que mesmo em caso de vazamento de dados, as senhas dos usuários não estarão expostas.
 
 ### Validação de dados
-Para garantir que os dados enviados nas requisições estejam no formato esperado, foi utilizada a biblioteca Joi para realizar validações. Essa biblioteca ajuda a prevenir erros e vulnerabilidades de segurança.
+Para garantir que os dados enviados nas requisições estejam no formato esperado, foi utilizada a biblioteca `Joi` para realizar validações. Essa biblioteca ajuda a prevenir erros e vulnerabilidades de segurança.
